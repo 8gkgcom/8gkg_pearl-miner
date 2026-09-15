@@ -48,12 +48,7 @@ cd 8gkg_pearl
 
 ## HiveOS 安装与飞行表
 
-使用 **`8gkg_pearl-VERSION.tar.gz`**，保留这个文件名。将安装包上传到矿机后，在矿机终端执行：
-
-```bash
-mkdir -p /hive/miners/custom
-tar -xzf 8gkg_pearl-VERSION.tar.gz -C /hive/miners/custom
-```
+使用 **`8gkg_pearl-VERSION.tar.gz`**，保留这个文件名。
 
 飞行表选择 **Custom**，填写：
 
@@ -69,7 +64,7 @@ tar -xzf 8gkg_pearl-VERSION.tar.gz -C /hive/miners/custom
 **全部矿工参数从“附加配置参数”读取**，不从飞行表的钱包模板、矿池、密码或算法字段生成。将 `YOUR_PEARL_ADDRESS` 替换为自己的 PRL 钱包，然后把下面一行完整粘贴到附加配置：
 
 ```text
---pool tls://prl.kryptex.network:8048 --wallet YOUR_PEARL_ADDRESS --worker WORKER_NAME --password x --devfee 1
+--pool tls://prl.kryptex.network:8048 --wallet YOUR_PEARL_ADDRESS --worker WORKER_NAME
 ```
 
 这里的 `WORKER_NAME` 是本矿工支持的字面占位符，**不加 `%` 或 `$`**。每次启动时替换为当前 HiveOS 设备名。例如设备名为 `rig3080`，`--worker WORKER_NAME` 实际使用 `--worker rig3080`。也可以把占位符直接写在钱包后：
@@ -87,7 +82,7 @@ tar -xzf 8gkg_pearl-VERSION.tar.gz -C /hive/miners/custom
 附加配置同样支持 JSON 对象：
 
 ```json
-{"pool":"tls://prl.kryptex.network:8048","wallet":"YOUR_PEARL_ADDRESS","worker":"WORKER_NAME","password":"x","devfee":1,"gpu-id":"0,1","api-port":21373}
+{"pool":"tls://prl.kryptex.network:8048","wallet":"YOUR_PEARL_ADDRESS","worker":"WORKER_NAME","password":"x","gpu-id":"0,1","api-port":21373}
 ```
 
 未指定的参数使用程序默认值；留空全部附加配置会使用本版测试钱包，请在正式挖矿前填好自己的 `--wallet`。不要将可执行文件名或 shell 命令填入附加配置，只填写矿工参数。
